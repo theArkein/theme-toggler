@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+👋! In this article, we are going to build a theme toggler that supports system preference and manual selection using Next.js or React and Tailwind CSS.
 
-## Getting Started
+A Quick overview:
 
-First, run the development server:
+1. Setup [Next.js](https://nextjs.org/docs/getting-started) or [React](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) with [tailwindcss](https://tailwindcss.com/docs/installation/framework-guides)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+2. Configure tailwind for [Dark Mode](https://tailwindcss.com/docs/dark-mode)
+
+- Media Strategy: To support system(browser/os) preference, Available by default
+- Class strategy: To support both system preference or a manually selected mode
+
+Continue, For class strategy
+
+3. Check theme preference in localStorage or system preference using [`Window.matchMedia()` API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
+
+- If preference is "dark", Add "dark" classname in HTML tree
+- Else, Remove "dark" classname from HTML tree
+
+```
+ if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Manually toggle theme
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Set light mode
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+localStorage.theme = 'light'
+```
 
-## Learn More
+- Set dark mode
 
-To learn more about Next.js, take a look at the following resources:
+```
+localStorage.theme = 'dark'
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Set system preference
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+localStorage.removeItem('theme')
+```
 
-## Deploy on Vercel
+Continue, to implement theme toggling using context and hooks
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Build a context-hook(`ThemeProvider` & `useTheme`) for theme context:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The context checks for theme preference.
+
+- The context should provide: `theme` to get theme preference, and methods `setDarkTheme`, `setLightTheme` & `setSystemTheme` to set theme modes
