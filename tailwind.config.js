@@ -5,6 +5,6 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: "media", // by default uses media option
+  darkMode: "class", // use "class" strategy to support toggling dark mode manually
   plugins: [],
 }
