@@ -16,7 +16,7 @@ export default function Home() {
         <div className=" flex justify-between">
           <div className="max-w-md">
             <h1 className='text-2xl font-semibold mb-1 dark:text-white text-gray-900'>Building a theme toggler in NextJs with tailwind</h1>
-            <div className='text-sm text-gray-500 dark:text-gray-400 font-medium'>By Sarad Singh</div>
+            <a href="https://www.saradsingh.com.np" className='text-sm text-gray-500 dark:text-gray-400 hover:dark:text-gray-300 font-medium'>By Sarad Singh</a>
           </div>
           <div className="w-16 h-16 bg-emerald-500 flex justify-center items-center rounded-full">
             <span className='text-white text-3xl font-semibold'>S</span>
