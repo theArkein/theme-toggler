@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <div className='max-w-lg mt-6'>
           <p className='text-sm text-gray-500 dark:text-gray-400' >
-            This feature is typically used to change the color scheme, font style, and other visual elements to better suit the user's preferences or needs. It can be useful for improving accessibility, reducing eye strain, or simply providing a more personalized user experience.
+            This feature is typically used to change the color scheme, font style, and other visual elements to better suit the user&apos;s preferences or needs. It can be useful for improving accessibility, reducing eye strain, or simply providing a more personalized user experience.
           </p>
 
           <div className='mt-6 text-sm flex gap-20'>
