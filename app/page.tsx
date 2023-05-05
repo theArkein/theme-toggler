@@ -1,8 +1,17 @@
+import { ThemeToggler } from '@components'
 import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="w-screen h-screen flex justify-center items-center dark:bg-slate-900">
+    <div className="w-screen h-screen flex flex-col justify-center items-center dark:bg-slate-900">
+      <div className='mb-8 flex justify-between gap-8'>
+        <h1 className='text-lg font-semibold mb-1 dark:text-white text-gray-900'>Theme Toggler</h1>
+        <div className='flex gap-6'>
+          <ThemeToggler type='dark' />
+          <ThemeToggler type="light" />
+          <ThemeToggler type="system" />
+        </div>
+      </div>
       <div className="border border-gray-200 rounded-md p-8 shadow dark:bg-gray-800 dark:border-gray-700">
         <div className=" flex justify-between">
           <div className="max-w-md">
